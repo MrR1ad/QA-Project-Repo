@@ -3,6 +3,7 @@ const { devices } = require('@playwright/test');
 module.exports = {
   timeout: 60000,
   retries: 1,
+  reporter: [['list'], ['html', { open: 'never' }]],
   testDir: './tests',
   use: {
     headless: true,
