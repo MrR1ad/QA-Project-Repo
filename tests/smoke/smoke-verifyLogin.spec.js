@@ -14,7 +14,7 @@ test.describe('Login Functionality', () => {
     await loginPage.openLoginForm();
 
     // Perform login with valid credentials
-    await loginPage.login('studentuser@middlebury.edu', 'Test123');
+    await loginPage.login('studentuser@middlebury.edu', 'Test123'); //calls the login from LoginPage
 
     // Verify successful login
     await loginPage.verifyLogin();

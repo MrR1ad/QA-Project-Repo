@@ -21,6 +21,7 @@ class LoginPage {
   }
 
   async login(email, password) {
+    //enters info and clicks submit
     await this.page.fill(this.emailInput, email);
     await this.page.fill(this.passwordInput, password);
     await this.page.click(this.submitButton);
