@@ -52,3 +52,34 @@ npm run test:functional
 - Ensure the backend server is running before executing the tests.
 - The tests are designed to run on **Chromium**, **Firefox**, and **WebKit** browsers.
 - All tests are executed in **headless mode** by default. If you want to run them with a visible browser window, append the `--headed` flag to the test command.
+
+---
+
+## About this fork
+
+This suite was built by a three-person team for the Ekipa student platform, a project
+done in collaboration with Deutsche Telekom. This fork is where I continue to work on it.
+
+### Test structure
+
+- `tests/smoke/` - critical user paths: login, logout, search, apply
+- `tests/functional/` - feature checks, including negative cases (sign-up validation, search with no results, pagination)
+- `tests/api/` - backend checks without the UI
+- `page-objects/` - Page Object Model: one class per page with its locators and actions
+
+### What I added
+
+- HTML test report (`npx playwright show-report` after a run)
+- Bug report for an issue found while running the suite: [BUG-001](bug-reports/BUG-001-duplicate-applications.md)
+- Explanatory comments in the config and login tests
+
+### Findings from running the suite
+
+- The application smoke test depends on an external email service, so it fails when email sending is down.
+- The logout test is flaky: it asserts on a success message that is only shown for a short time.
+
+### Planned improvements
+
+- Negative API tests for sign-up (invalid email domain, missing fields, duplicate email)
+- Use `baseURL` in all tests instead of hardcoded URLs
+- Move test credentials to environment variables
